@@ -3,7 +3,7 @@ function sync() {
     "6egh8csi6u0d3c16tcjg1inau9r7n1@import.calendar.google.com",
     "r7u2rm3q67085jbbh8s6p9mrnhqa3s3q@import.calendar.google.com"
   ]; //ids of the listing import calendars
-  var destId = //id of calendar events will be synced to
+  var masterId = //id of calendar events will be synced to
     "a05f36v81m65shdn44lbnudo@group.calendar.google.com";
   var numDaysOut = 90; // merges all x days out, and only future events
 
@@ -16,7 +16,7 @@ function sync() {
     enddate.setDate(today.getDate() + numDaysOut); // only merges event numDaysOut, and only future events
     var events = cal.getEvents(today, enddate); // holds the events to be merged
 
-    var mycal = CalendarApp.getCalendarById(destId);
+    var mycal = CalendarApp.getCalendarById(masterId);
 
     var myevs = mycal.getEvents(today, enddate);
 
