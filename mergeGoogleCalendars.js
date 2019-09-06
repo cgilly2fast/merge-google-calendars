@@ -1,11 +1,12 @@
 function sync() {
+  var numDaysOut = 90; // merges all x days out, and only future events
+  var masterId = //id of calendar events will be synced to
+  "a05f36v81m65shdn44lbnudo@group.calendar.google.com";
   var ids = [
     "6egh8csi6u0d3c16tcjg1inau9r7n1@import.calendar.google.com",
     "r7u2rm3q67085jbbh8s6p9mrnhqa3s3q@import.calendar.google.com"
   ]; //ids of the listing import calendars
-  var masterId = //id of calendar events will be synced to
-    "a05f36v81m65shdn44lbnudo@group.calendar.google.com";
-  var numDaysOut = 90; // merges all x days out, and only future events
+
 
   for (i in ids) {
     var id = ids[i];
@@ -52,15 +53,15 @@ function sync() {
         if (evi.isAllDayEvent()) {
           mycal.createAllDayEvent(
             evi.getTitle(),
-            evi.getAllDayStartDate(),
-            evi.getAllDayEndDate(),
+            eviStart,
+            eviEnd,
             { location: evi.getLocation(), description: evi.getDescription() }
           );
         } else {
           mycal.createEvent(
             evi.getTitle(),
-            evi.getStartTime(),
-            evi.getEndTime(),
+            eviStart,
+            eviEnd,
             { location: evi.getLocation(), description: evi.getDescription() }
           );
         }
